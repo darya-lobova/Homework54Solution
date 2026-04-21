@@ -3,4 +3,4 @@
 
 using namespace std;
 
-bool binary_search(int array[DEFAULT_SIZE], int length, int number);
+bool binary_search(int array[], int number, int left, int right);

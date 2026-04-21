@@ -1,23 +1,19 @@
 #include "logic.h"
 
 int main() {
-	int array[DEFAULT_SIZE];
+
 	int number;
-	int length;
+	int length = 5;
+	int left = 0;
+	int right = length - 1;
 
 	cout << "Input number: ";
 	cin >> number;
 
-	cout << "Input size of array: ";
-	cin >> length;
+	int array[5] = { 6, 7, 8, 9, 10 };
 
-	cout << "Input elements of array: ";
-	for (int i = 0; i < length; i++)
-	{
-		cin >> array[i];
-	}
 
-	bool result = binary_search(array, length, number);
+	bool result = binary_search(array, number, left, right);
 
 	string msg = result ? "Yes" : "No";
 

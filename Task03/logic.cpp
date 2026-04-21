@@ -1,41 +1,21 @@
 #include "logic.h"
 
-bool binary_search(int array[], int length, int number) {
+bool binary_search(int array[],int number, int left, int right) {
+
 
 	//fool-proof
-	if (length <= 0) {
+	if (right < left ) {
 		return false;
 	}
 
-	for (int i = 0; i < length; i++)
-	{
-		if (array[i] > array[i + 1]) {
-			return false;
-		}
-	}
+	int middle = left + (right - left) / 2;
 
 	//base case
-	if (array[0] == number) {
+	if (array[middle] == number) {
 		return true;
 	}
 
-	int left = 0;
-	int right = length - 1;
-
-	while (left <= right) {
-		int mid = (left + right) / 2;
-
-		if (array[mid] == number) {
-			return true;
-		}
-
-		if (array[mid] < number) {
-			left = mid + 1;
-		}
-		else {
-			right = mid - 1;
-		}
-	}
-
-	return false;
+	//recursion case
+	return array[middle] > number ? binary_search(array, number, left, middle - 1)
+		: binary_search(array, number, middle + 1, right);
 }
